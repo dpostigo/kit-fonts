@@ -1,0 +1,47 @@
+
+
+.font-family(@selector) {
+	.@{selector} {
+		font-family: @@selector;
+	}
+}
+
+#kit {
+
+	.makeFont(@name) {
+		@fontVariable: '@{name}';
+		#kit > .makeFontSelector(@name, @@fontVariable);
+	}
+
+	.makeFont(@name, @style) {
+		@Light: light;
+		@Semibold: semibold;
+		@fontVariable: '@{name}@{style}';
+		@selector: @name;
+		// #kit > .makeFontSelector(@name, @@fontVariable);
+
+		& when (@style=Regular) {
+			// .@{selector} { font-family: @@fontVariable; }
+			#kit > .makeFontSelector(@selector, @@fontVariable);
+		}
+
+		& when not (@style=Regular) {
+			@styleSelector: @@style;
+			// #kit > .makeFontSelector(@thing, @@fontVariable);
+			.@{selector}.@{styleSelector} { font-family: @@fontVariable; font-weight: normal}
+		}
+	}
+
+
+
+	.makeThing(@name, @style) when (@style=Light) {
+		@fontVariable: '@{name}@{style}';
+		.@{name}.light { font-family: @@fontVariable; font-weight: normal}
+	}
+
+	.makeFontSelector(@selector, @fontName) {
+		.@{selector} { font-family: @fontName; }
+
+	}
+
+}

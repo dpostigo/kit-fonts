@@ -1,0 +1,22 @@
+{
+  "name": "kit-fonts",
+  "version": "0.0.1",
+  "authors": [
+    "Dani Postigo <dani.postigo@gmail.com>"
+  ],
+  "description": "kit fonts",
+  "main": "less/kit-fonts.less",
+  "keywords": [
+    "less",
+    "css",
+    "fonts"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
