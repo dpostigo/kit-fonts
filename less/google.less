@@ -1,0 +1,20 @@
+
+.font-google('Carter One');
+.font-google('Courgette');
+.font-google('Euphoria Script');
+.font-google('Sanchez');
+.font-google('Slabo');
+
+
+.font-google(@name) {
+	@lowercase: e(`@{name}.toLowerCase()`);
+	@selector: e(replace(@lowercase, "(\s\w*)+", ""));
+	.@{selector} { font-family: @name; }
+	.font-google-import(@name);
+}
+
+
+.font-google-import(@fontName) {
+	@font: replace(@fontName, " ", "+");
+	@import url('http://fonts.googleapis.com/css?family=@{font}');
+}
