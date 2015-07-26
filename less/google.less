@@ -7,8 +7,8 @@
 
 
 .font-google(@name) {
-	@lowercase: e(`@{name}.toLowerCase()`);
-	@selector: e(replace(@lowercase, "(\s\w*)+", ""));
+	// @lowercase: e(`@{name}.toLowerCase()`);
+	@selector: e(replace(e(`@{name}.toLowerCase()`), "(\s\w*)+", ""));
 	.@{selector} { font-family: @name; }
 	.font-google-import(@name);
 }

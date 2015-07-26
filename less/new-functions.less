@@ -7,21 +7,63 @@
 // .font-with-style(sourceSans, Light);
 // .font-with-style(sourceSans, Semibold);
 
+.font-style-test('SourceSansPro');
+.font-style-test('SourceSansPro-Light');
+
+.font-style-test(@fontString) {
+
+	@replaced: replace(@fontString, "Pro", "");
+	@font: replace(e(`@{replaced}.charAt(0).toLowerCase() + @{replaced}.slice(1)`), "-\w+", "");
+	// @font: @selector, "-\w+", "");
+	.@{font} {
+		font-family: @fontString;
+	}
 
 
 
-.font-styles('SourceSansPro'; 'Regular', 'Light', 'Semibold');
+	// @styleText: replace(@fontString, "\w+-", "");
+	// @style: e(`@{fontString}.toString().toLowerCase()`);
+	// @style: replace(e(`@{fontString}.toString().toLowerCase()`), "\w+-", "");
+	@style: replace(e(`@{fontString}.toString().toLowerCase()`), "\w+-", "");
+
+	// @style: @fontString;
+
+	// .result-@{style} {
+	// 	font-family: 'yo';
+	// }
+
+
+	.@{font}.@{style} {
+		font-family: @fontString;
+		font-weight: normal;
+	}
+
+	
+
+}
+
+/*
+
+// .font-styles('SourceSansPro'; 'Regular', 'Light', 'Semibold');
 
 .font-styles(@font, ...) {
 	// @lowercase: e(`@{replace(@font, "Pro", "")}.toLowerCase()`);
+	// @replaced: replace(@font, "Pro", "");
+	// // @lowercase: e(`@{replaced}.toLowerCase()`);
+	// @camelCase: replace(@replaced, "^(\w)$", "\L$1");
+	// @camelCase: "@"
+	// .@{camelCase} {
+	// 	font-family: @font;
+	// }
+
 	@replaced: replace(@font, "Pro", "");
-	@lowercase: e(`@{replaced}.toLowerCase()`);
-	.@{lowercase} {
+	@selector: e(`@{replaced}.charAt(0).toLowerCase() + @{replaced}.slice(1)`);
+	.@{selector} {
 		font-family: @font;
 	}
 }
 
-
+*/
 
 .font-with-style(@name) {
 	@fontVariable: '@{name}';
