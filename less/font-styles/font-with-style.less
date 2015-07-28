@@ -1,0 +1,42 @@
+@sourceSans: 			'SourceSansPro';
+@sourceSansRegular: 		'SourceSansPro-Regular';
+@sourceSansSemibold: 	'SourceSansPro-Semibold';
+@sourceSansLight: 		'SourceSansPro-Light';
+
+.font-with-style(sourceSans, Regular);
+.font-with-style(sourceSans, Light);
+.font-with-style(sourceSans, Semibold);
+
+
+
+
+.font-with-style(@name) {
+	@fontVariable: '@{name}';
+	.font-with-styleSelector(@name, @@fontVariable);
+}
+
+
+.font-with-style(@name, @style) {
+	@Light: light;
+	@Semibold: semibold;
+	@fontVariable: '@{name}@{style}';
+	@selector: @name;
+
+	& when (@style=Regular) {
+		.font-with-styleSelector(@selector, @@fontVariable);
+	}
+
+	& when not (@style=Regular) {
+		@styleSelector: @@style;
+		.@{selector}.@{styleSelector} { 
+			font-family: @@fontVariable; 
+			font-weight: normal
+		}
+	}
+}
+
+
+
+.font-with-styleSelector(@selector, @fontName) {
+	.@{selector} { font-family: @fontName; }
+}

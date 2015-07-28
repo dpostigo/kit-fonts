@@ -1,0 +1,22 @@
+/*
+
+// .font-styles('SourceSansPro'; 'Regular', 'Light', 'Semibold');
+
+.font-styles(@font, ...) {
+	// @lowercase: e(`@{replace(@font, "Pro", "")}.toLowerCase()`);
+	// @replaced: replace(@font, "Pro", "");
+	// // @lowercase: e(`@{replaced}.toLowerCase()`);
+	// @camelCase: replace(@replaced, "^(\w)$", "\L$1");
+	// @camelCase: "@"
+	// .@{camelCase} {
+	// 	font-family: @font;
+	// }
+
+	@replaced: replace(@font, "Pro", "");
+	@selector: e(`@{replaced}.charAt(0).toLowerCase() + @{replaced}.slice(1)`);
+	.@{selector} {
+		font-family: @font;
+	}
+}
+
+*/
